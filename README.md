@@ -1,7 +1,5 @@
 # 🎉 AI-Customer Support 🚀
 
-![AI-Customer Support](https://media.giphy.com/media/3o7TKRB8WdHFPwvNks/giphy.gif)
-
 ## 🌟 Overview
 
 AI-Customer Support is a sophisticated customer service platform that leverages artificial intelligence to provide efficient and effective support to users. This project utilizes state-of-the-art natural language processing models to understand and respond to customer queries, improving the overall support experience.
@@ -123,4 +121,3 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 For any questions or issues, please open an issue in this repository or contact us at support@ai-customersupport.com.
 
-![Thank You](https://media.giphy.com/media/l41lVSYgX8FbABjRS/giphy.gif)
