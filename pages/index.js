@@ -14,18 +14,21 @@ export default function Home() {
   const handleSubmit = (event) => {
     event.preventDefault();
     setChatLog((preChatLog) => [...preChatLog, {type: "user", message: inputValue}]);
+     
 
+    sendMessage(inputValue);
     setInputValue("");
   }
 
   const sendMessage = (message) => {
-   const url = "https://api.openai.com/v1/chat/completions"; 
+   const url = "https://api.openai.com/v1/chat/completions"
+; 
    const headers = {
      "Content-Type": "application/json",
      "Authorization": `Bearer ${process.env.NEXT_PUBLIC_OPENAI_API_KEY}`
    };
    const data = {
-     model: "gpt-4",
+     model: "",
      messages: [
              {
          role: "user",
@@ -40,7 +43,11 @@ export default function Home() {
    axios.post(url, data, {headers}).then((response) => {
     console.log(response);
     setChatLog((preChatLog) => [...preChatLog, {type: "bot", message: response.data.choices[0].message.content}]);
-   })
+    setIsLoading(false);
+   }).catch((error) => {
+     console.log(error);
+     setIsLoading(false);
+   });
   };
 
   return (
