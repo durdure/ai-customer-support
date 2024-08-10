@@ -2,6 +2,7 @@ import React from 'react'
 import Head from 'next/head'
 import Header from './Header'
 import Slider from 'react-slick';
+import Link from 'next/link';
 
 function Homepage() {
     const sliderSettings = {
@@ -22,6 +23,22 @@ function Homepage() {
             href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap" 
             rel="stylesheet"
             />
+             <style jsx global>{`
+                @keyframes slideIn {
+                    from {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                    }
+                    to {
+                    transform: translateX(0);
+                    opacity: 1;
+                    }
+                }
+                .animate-slideIn {
+                    animation: slideIn 1s ease-out;
+                }
+        `}</style>
+
         </Head>
         <Header/>
         <section className="flex items-center justify-center min-h-screen bg-gradient-to-r from-blue-900 via-purple-900 to-blue-900 bg-fixed">
@@ -30,7 +47,7 @@ function Homepage() {
             <img 
               src="https://media2.giphy.com/avatars/acetech/RK67baKq9A79.gif" 
               alt="chatting gif" 
-              className="w-full max-w-sm rounded-lg"
+              className="w-full max-w-sm rounded-lg animate-slideIn delay-300"
             />
           </div>
           <div className="flex-1 text-center">
@@ -50,12 +67,9 @@ function Homepage() {
               >
                 Learn More
               </a>
-              <a 
-                href="#get-started"
-                className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300"
-              >
-                Get Started
-              </a>
+              <Link href="/chat" className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300">    
+                  Get Started
+              </Link>
             </div>
           </div>
         </div>
