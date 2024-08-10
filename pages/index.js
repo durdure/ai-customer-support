@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
         <title>Ai-customer-support</title>
-         <Page/>
+         <Homepage />
     </div>
   );
 }
