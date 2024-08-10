@@ -30,7 +30,7 @@ function Homepage() {
               className="px-6 py-2 bg-blue-600 text-white font-semibold rounded-full hover:bg-blue-700 transition-all duration-300"
             >
               Learn More
-            </a>
+</a>
             <a 
               href="#get-started"
               className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300"
