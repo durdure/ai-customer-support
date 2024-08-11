@@ -49,21 +49,40 @@ Account Assistance:
 "To reset your password, click on the 'Forgot Password' link on the login page. Enter your registered email address, and you'll receive instructions on how to reset your password. If you encounter any issues during this process, please let me know, and I'll assist you further."
 By adhering to these guidelines, you will ensure a high-quality support experience for Headstarter users, helping them make the most of the platform and succeed in their interview preparations.`;
 
-export async function POST(req) {
+
+
+export const config = {
+  runtime: 'edge',
+};
+
+export default async function handler(req) {
+  if (req.method !== 'POST') {
+    return NextResponse.json({ error: 'Method not allowed' }, { status: 405 });
+  }
+
   const groq = new Groq({
-    apiKey: "sk-proj-RbefZvx3Wppn3lrzA5XmT3BlbkFJZTF0HO2fAsJWYpPPVjSc",
+    apiKey: "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",
   });
 
-  const data = await req.json();
+  let data;
+  try {
+    data = await req.json();
+  } catch (error) {
+    console.error('Error parsing JSON:', error);
+    return NextResponse.json({ error: 'Invalid JSON' }, { status: 400 });
+  }
+
   console.log(data);
 
-  const complition = await groq.chat.completions.create({
+  const messages =  Array.isArray(data.messages) ? data.messages : [];
+
+  const completion = await groq.chat.completions.create({
     messages: [
       {
         role: "system",
         content: systemPrompt,
       },
-      ...data,
+      ...messages,
     ],
     model: "llama3-70b-8192",
     stream: true,
@@ -73,7 +92,7 @@ export async function POST(req) {
     async start(controller) {
       const encoder = new TextEncoder();
       try {
-        for await (const chunk of complition) {
+        for await (const chunk of completion) {
           const content = chunk.choices[0]?.delta?.content;
           if (content) {
             const text = encoder.encode(content);
