@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Page from './Page';
+import Homepage from '../components/Homepage';
 
 export default function Home() {
   return (
@@ -7,7 +8,7 @@ export default function Home() {
       <Head>
         <title>Ai-customer-support</title>
       </Head>
-      <Page />
+      <Homepage/>
     </div>
   );
 }

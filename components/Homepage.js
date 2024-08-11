@@ -67,7 +67,7 @@ function Homepage() {
               >
                 Learn More
               </a>
-              <Link href="/chat" className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300">    
+              <Link href="/Page" className="px-6 py-2 bg-green-600 text-white font-semibold rounded-full hover:bg-green-700 transition-all duration-300">    
                   Get Started
               </Link>
             </div>
